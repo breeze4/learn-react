@@ -1,5 +1,4 @@
 /.idea
 *.iml
 /**/node_modules
-/thumbnail-gulp/main.js
-/dropdown/main.js
+/**/*.js
