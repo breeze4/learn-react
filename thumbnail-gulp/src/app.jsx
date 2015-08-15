@@ -1,3 +1,6 @@
+var React = require('react'); // npm style include
+var ThumbnailList = require('./thumbnail-list'); // local module style include
+
 var options = {
     thumbnailData: [{
         title: 'See Courses ',

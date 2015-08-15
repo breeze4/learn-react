@@ -1,4 +1,4 @@
 /.idea
 *.iml
 /**/node_modules
-/thumbnail-gulp/application.js
+/thumbnail-gulp/main.js
