@@ -16,7 +16,5 @@ var options = {
     }]
 }
 
-// tell react to render the class
 var element = React.createElement(ThumbnailList, options);
-// tell react to place the class in the body tag
 React.render(element, document.querySelector('.container'));
