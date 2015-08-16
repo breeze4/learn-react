@@ -21,10 +21,10 @@ var App = React.createClass({
         });
     },
     componentWillMount: function () {
-        var fb = new Firebase(rootUrl + 'items/');
+        this.fb = new Firebase(rootUrl + 'items/');
         // reactfire, sets 'items' as a state attribute that gets the firebase instance bound to it
-        this.bindAsObject(fb, 'items');
-        fb.on('value', this.handleDataLoaded);
+        this.bindAsObject(this.fb, 'items');
+        this.fb.on('value', this.handleDataLoaded);
     },
     render: function () {
         return <div className="row panel panel-default">
@@ -33,11 +33,35 @@ var App = React.createClass({
                     To-Do List
                 </h2>
                 <Header itemsStore={this.firebaseRefs.items}/>
+                <hr />
                 <div className={"content " + (this.state.loaded ? 'loaded' : '')}>
                     <List items={this.state.items}/>
                 </div>
+                {this.deleteButton()}
             </div>
         </div>
+    },
+    deleteButton: function () {
+        if (!this.state.loaded) {
+            return;
+        } else {
+            return <div className="text-center clear-complete">
+                <hr />
+                <button
+                    type="button"
+                    onClick={this.onDeleteDoneClick}
+                    className="btn btn-default">
+                    Clear Complete
+                </button>
+            </div>
+        }
+    },
+    onDeleteDoneClick: function() {
+        for(var key in this.state.items) {
+            if(this.state.items[key].done === true) {
+                this.fb.child(key).remove();
+            }
+        }
     }
 });
 

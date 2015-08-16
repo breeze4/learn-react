@@ -1,11 +1,12 @@
 var React = require('react');
+var ListItem = require('./list-item');
 
 // need to implement base case of when user has no todos
 var List = React.createClass({
     render: function () {
-        return <ul>
+        return <div>
             {this.renderList()}
-        </ul>
+        </div>
     },
     renderList: function () {
         if (!this.props.items) {
@@ -14,8 +15,11 @@ var List = React.createClass({
             var children = [];
             for (var key in this.props.items) {
                 var item = this.props.items[key];
+                item.key = key;
                 children.push(
-                    <li>{item.text}</li>
+                    <ListItem item={item}
+                              key={key}>
+                    </ListItem>
                 )
             }
             return children;

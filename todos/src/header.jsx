@@ -22,10 +22,12 @@ var Header = React.createClass({
     },
     render: function () {
         return <div className="input-group">
-            <input type="text" className="form-control" onChange={this.handleInputChange} value={this.state.text}/>
+            <input type="text" className="form-control"
+                   onChange={this.handleInputChange}
+                   value={this.state.text}/>
             <span className="input-group-btn">
                 <button
-                    className="btn btn-default"
+                    className="btn btn-primary"
                     type="button"
                     onClick={this.handleClick}>
                     Add
