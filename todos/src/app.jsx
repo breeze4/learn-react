@@ -2,15 +2,20 @@ var React = require('react');
 var ReactFire = require('reactfire');
 var Firebase = require('firebase');
 var Header = require('./header');
+var List = require('./list');
 
 var rootUrl = 'https://scorching-inferno-5880.firebaseio.com/';
 
 var App = React.createClass({
     mixins: [ReactFire],
+    getInitialState: function () {
+        return {
+            items: {}
+        }
+    },
     componentWillMount: function () {
         // reactfire, sets 'items' as a state attribute that gets the firebase instance bound to it
         this.bindAsObject(new Firebase(rootUrl + 'items/'), 'items');
-        this.firebaseRefs.items.set
     },
     render: function () {
         return <div className="row panel panel-default">
@@ -18,7 +23,8 @@ var App = React.createClass({
                 <h2 className="text-center">
                     To-Do List
                 </h2>
-                <Header itemsStore={this.firebaseRefs.items} />
+                <Header itemsStore={this.firebaseRefs.items}/>
+                <List items={this.state.items}/>
             </div>
         </div>
     }
