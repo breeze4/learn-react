@@ -1,5 +1,5 @@
 var React = require('react');
-var Api = require('../utils/api'); // up a level first
+var TopicStore = require('../stores/topic-store');
 
 var TopicList = React.createClass({
     getInitialState: function () {
@@ -8,11 +8,12 @@ var TopicList = React.createClass({
         }
     },
     componentWillMount: function () {
-        Api.get('topics/defaults').then(function (data) {
-            this.setState({
-                topics: data.data
-            })
-        }.bind(this));
+        TopicStore.getTopics() // returns a promise
+            .then(function () {
+                this.setState({
+                    topics: TopicStore.topics
+                });
+            }.bind(this));
     },
     render: function () {
         return <div className="list-group">
