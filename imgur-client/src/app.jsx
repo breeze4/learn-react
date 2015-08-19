@@ -1,5 +1,8 @@
 var React = require('react');
 var Routes = require('./routes');
-var Api = require('./utils/api');
+var ReactRouter = require('react-router');
 
-React.render(Routes, document.querySelector('.container'));
+ReactRouter.run(Routes, function (Routes) {
+    React.render(<Routes />, document.querySelector('.container'));
+});
+
