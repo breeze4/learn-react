@@ -2,5 +2,6 @@ var Reflux = require('reflux');
 
 module.exports = Reflux.createActions([
     'getTopics', // wires up a method of the same name on anything that implements this as listenables
-    'getImages'
+    'getImages',
+    'getImage' // gets both the image AND the comments
 ]);

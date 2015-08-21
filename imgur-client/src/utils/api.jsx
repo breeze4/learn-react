@@ -15,6 +15,4 @@ var Api = {
     }
 };
 
-// usage: Api.get('topics/defaults').then(function(data){console.log(data)}
-
 module.exports = window.api = Api;
